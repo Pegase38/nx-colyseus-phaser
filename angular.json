@@ -1,0 +1,181 @@
+{
+  "version": 1,
+  "projects": {
+    "api": {
+      "root": "apps/api",
+      "sourceRoot": "apps/api/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/api",
+            "main": "apps/api/src/main.ts",
+            "tsConfig": "apps/api/tsconfig.app.json",
+            "assets": ["apps/api/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/src/environments/environment.ts",
+                  "with": "apps/api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "api:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/api/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/api"],
+          "options": {
+            "jestConfig": "apps/api/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "nx-colyseus-phaser-template": {
+      "projectType": "application",
+      "root": "apps/nx-colyseus-phaser-template",
+      "sourceRoot": "apps/nx-colyseus-phaser-template/src",
+      "prefix": "nx-colyseus-phaser",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/nx-colyseus-phaser-template",
+            "index": "apps/nx-colyseus-phaser-template/src/index.html",
+            "main": "apps/nx-colyseus-phaser-template/src/main.ts",
+            "polyfills": "apps/nx-colyseus-phaser-template/src/polyfills.ts",
+            "tsConfig": "apps/nx-colyseus-phaser-template/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/nx-colyseus-phaser-template/src/favicon.ico",
+              "apps/nx-colyseus-phaser-template/src/assets"
+            ],
+            "styles": ["apps/nx-colyseus-phaser-template/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/nx-colyseus-phaser-template/src/environments/environment.ts",
+                  "with": "apps/nx-colyseus-phaser-template/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "nx-colyseus-phaser-template:build:production"
+            },
+            "development": {
+              "browserTarget": "nx-colyseus-phaser-template:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "nx-colyseus-phaser-template:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/nx-colyseus-phaser-template/src/**/*.ts",
+              "apps/nx-colyseus-phaser-template/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/nx-colyseus-phaser-template"],
+          "options": {
+            "jestConfig": "apps/nx-colyseus-phaser-template/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "nx-colyseus-phaser-template-e2e": {
+      "root": "apps/nx-colyseus-phaser-template-e2e",
+      "sourceRoot": "apps/nx-colyseus-phaser-template-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/nx-colyseus-phaser-template-e2e/cypress.json",
+            "devServerTarget": "nx-colyseus-phaser-template:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "nx-colyseus-phaser-template:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": [
+              "apps/nx-colyseus-phaser-template-e2e/**/*.{js,ts}"
+            ]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["nx-colyseus-phaser-template"]
+    }
+  }
+}
