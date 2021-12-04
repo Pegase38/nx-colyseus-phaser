@@ -9,5 +9,9 @@ export class AppComponent {
   title = 'nx-colyseus-phaser-template';
 
   test() {
+    const test = 1;
+    let test2 =3;
+    test2=2;
+    if(test === test2){return;}
   }
 }
