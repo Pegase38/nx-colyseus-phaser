@@ -14,7 +14,14 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@nx-colyseus-phaser/api/chess/application": [
+        "libs/api/chess/application/src/index.ts"
+      ],
+      "@nx-colyseus-phaser/api/chess/domain": [
+        "libs/api/chess/domain/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

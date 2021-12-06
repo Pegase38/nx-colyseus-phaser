@@ -53,6 +53,52 @@
       },
       "tags": []
     },
+    "api-chess-application": {
+      "root": "libs/api/chess/application",
+      "sourceRoot": "libs/api/chess/application/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/chess/application/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/chess/application"],
+          "options": {
+            "jestConfig": "libs/api/chess/application/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "api-chess-domain": {
+      "root": "libs/api/chess/domain",
+      "sourceRoot": "libs/api/chess/domain/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/api/chess/domain/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/api/chess/domain"],
+          "options": {
+            "jestConfig": "libs/api/chess/domain/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
     "nx-colyseus-phaser-template": {
       "projectType": "application",
       "root": "apps/nx-colyseus-phaser-template",
