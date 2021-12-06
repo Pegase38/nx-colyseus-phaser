@@ -23,7 +23,7 @@
               "fileReplacements": [
                 {
                   "replace": "apps/api/src/environments/environment.ts",
-                  "with": "apps/api/src/environments/environment.prod.ts"
+                  "with": "apps/api/src/environments/environment.production.ts"
                 }
               ]
             }
@@ -139,7 +139,7 @@
               "fileReplacements": [
                 {
                   "replace": "apps/nx-colyseus-phaser-template/src/environments/environment.ts",
-                  "with": "apps/nx-colyseus-phaser-template/src/environments/environment.prod.ts"
+                  "with": "apps/nx-colyseus-phaser-template/src/environments/environment.production.ts"
                 }
               ],
               "outputHashing": "all"
